@@ -9,16 +9,18 @@ function login($nama, $pass){
     $nama = secape($nama);
     $pass = secape($pass);
      
-$pass = md5($pass);
+// $pass = md5($pass);
 
-$query ="SELECT * FROM users WHERE username='$nama' AND password='$pass'";
+$query ="SELECT * FROM user WHERE username='$nama' AND password='$pass'";
 global $link;
 
-if($result= mysqli_query($link, $query)){
-     
-    if(mysqli_num_rows($result) != 0)return true;
-    else return false; 
-}
+    if($result= mysqli_query($link, $query)){
+        
+        if(mysqli_num_rows($result) != 0)
+        return true;
+        else 
+        return false; 
+    }
 
 }
 
@@ -41,12 +43,12 @@ function role($username){
 $query ="SELECT status FROM users WHERE username='$nama'";
 global $link;
 
-if($result= mysqli_query($link, $query)){
-    while($row = mysqli_fetch_assoc($result)){
-        $status = $row['role'];
+    if($result= mysqli_query($link, $query)){
+        while($row = mysqli_fetch_assoc($result)){
+            $status = $row['role'];
+        }
+        return $status;
     }
-    return $status;
- }
 }
 
 function run($query){
@@ -79,4 +81,13 @@ $pass = md5($pass);
     return run($query);
 }
 
+
+function data() {
+    global $link;
+
+    $query = "SELECT * FROM barang INNER JOIN kategori ON barang.id_jkategori = kategori.id";
+    $result = mysqli_query($link,$query);
+
+    return $result;
+}
 ?>
