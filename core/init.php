@@ -1,6 +1,6 @@
 <?php
 session_start();
 
-require_once "functon/db.php";
-require_once "functon/user.php";
+require_once 'function/db.php';
+require_once 'function/user.php';
 ?>
