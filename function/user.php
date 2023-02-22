@@ -76,7 +76,6 @@ function register($nama, $username, $pass, $role){
 
 $pass = md5($pass);
 
-
     $query = "INSERT INTO user (nama, username, password, role) VALUES ('$nama','$username', '$pass',$role)";
     return run($query);
 }
@@ -90,4 +89,14 @@ function data() {
 
     return $result;
 }
+
+function tambah_data($nama, $jumlah, $kategori, $keterangan){
+    $nama = secape($nama);    
+
+    $query = "INSERT INTO barang (nama, jumlah, id_jkategori, keterangan) VALUES ('$nama', '$jumlah', '$kategori', '$keterangan')";
+    return run($query);
+}
+
+
 ?>
+

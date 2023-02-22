@@ -1,8 +1,8 @@
 <?php
 require_once 'core/init.php';
 
-if ( isset($_SESSION['user'])) {
-    header('Locaton: frontend/data/index.php');
+if ( sset($_SESSION['user'])) {
+    header('Locaton: data/index.php');
 } else {
     $eror = '';
     if (isset($_POST['submit'])) {
@@ -12,12 +12,12 @@ if ( isset($_SESSION['user'])) {
         if (!empty(trim($nama)) && !empty(trim($pass))) {
             if (login($nama, $pass)) {
                 $_SESSION['user'] = $nama;
-                header('Location: frontend/data/index.php');
+                header('Location: data/index.php');
             }else {
-                $eror = "data masalah saat login";
+                $eror = 'data masalah saat login';
             }
         }else {
-            $eror = "Username dan Pasword wajib di isi";
+            $eror = 'Username dan Pasword wajib di isi';
         }
     }
 }
@@ -39,7 +39,7 @@ if ( isset($_SESSION['user'])) {
             <input class="in" type="text" id="username" name="username" autofocus><br><br>
             <label for="pass">Pssword</label><br>
             <input class="in" type="password" id="pass" name="pass"><br><br>
-            <div class="eror"><?php $eror ?></div>
+            <div class="eror"><?= $eror ?></div>
             <input class="btn" type="submit" name="submit" valua="Submit">
             <input class="res" type="reset" valua="Reset">
         </form>

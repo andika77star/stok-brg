@@ -1,0 +1,6 @@
+ <select id="kategori">
+                <option disabled>Silahkan Pilih</option>
+                <?php while($row = mysqli_fetch_assoc($data)) {?>
+                <option name="kategori"><?php echo $row['nama_kategori'] ?></option>
+                <?php } ?>
+            </select>
